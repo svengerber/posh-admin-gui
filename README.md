@@ -1,2 +1,2 @@
-# posh-admin-gui
+# Powershell Admin GUI
 Powershell Admin GUI
