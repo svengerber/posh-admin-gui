@@ -1,0 +1,24 @@
+<Window x:Class="WPF_for_Powershell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_for_Powershell"
+        mc:Ignorable="d"
+        Title="Powershell Admin GUI" Height="450" Width="800">
+
+    <Grid x:Name="mainGrid">
+        <Grid x:Name="searchGrid" Margin="10,10,10,371.5">
+            <Border BorderBrush="#FF179AC8" BorderThickness="2" />
+            <TextBox HorizontalAlignment="Left" Height="25" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="601"/>
+            <Button Content="Search" Height="25" Width="121" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
+        </Grid>
+        <Grid x:Name="functionGrid" Margin="10,56,10,10">
+            <Border BorderBrush="#FF179AC8" BorderThickness="2" />
+            <Grid x:Name="startGrid" Visibility="Hidden">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" FontSize="25"/>
+            </Grid>
+
+            
+
+
