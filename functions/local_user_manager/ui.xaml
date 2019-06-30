@@ -1,0 +1,3 @@
+<Grid x:Name="localusermanag" Visibility="Hidden">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="User Manager" VerticalAlignment="Top" FontSize="25"/>
+</Grid>

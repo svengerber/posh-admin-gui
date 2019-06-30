@@ -10,15 +10,14 @@
     <Grid x:Name="mainGrid">
         <Grid x:Name="searchGrid" Margin="10,10,10,371.5">
             <Border BorderBrush="#FF179AC8" BorderThickness="2" />
-            <TextBox HorizontalAlignment="Left" Height="25" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="601"/>
+            <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" Width="613" VerticalAlignment="Center" Height="25" IsEditable="True" Name="searchcombox"/>
             <Button Content="Search" Height="25" Width="121" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid x:Name="functionGrid" Margin="10,56,10,10">
             <Border BorderBrush="#FF179AC8" BorderThickness="2" />
+
+            <!-- INSERT_FUNCTIONS -->
+
             <Grid x:Name="startGrid" Visibility="Hidden">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" FontSize="25"/>
             </Grid>
-
-            
-
-

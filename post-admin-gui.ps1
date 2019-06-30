@@ -11,12 +11,10 @@ function Add-Functions($inputXML1)
     return $inputXML1
 }
 
-###LOADING FUNCTION PROPERTIES
-$functions = Get-Content "$PSScriptRoot\functions\*\properties.json" | ConvertFrom-Json
+#DEFINE FORM ITEMS
+$searchcomboxname = "searchcombox"
 
-Write-Host $functions
-Pause
-
+$searchcombox = $Form.$searchcomboxname
 
 
 ###GENERATING GUI
@@ -43,14 +41,29 @@ $xaml.SelectNodes("//*[@Name]") | %{
     catch{throw}
     }
 
+
+
+
+
+###LOADING FUNCTION PROPERTIES IN ARRAY
+$prop_files = Get-ChildItem -Recurse "$PSScriptRoot\functions\*\properties.json"
+$functions = @()
+foreach ($prop_file in $prop_files)
+{
+    $props = (Get-Content $prop_file.FullName | ConvertFrom-Json)
+    $object = New-Object -TypeName PSObject
+    $object | Add-Member -Name 'name' -MemberType Noteproperty -Value $props.name
+    $object | Add-Member -Name 'creator' -MemberType Noteproperty -Value $props.creator
+    $object | Add-Member -Name 'gridname' -MemberType Noteproperty -Value $props.gridname
+    $functions += $object
+}
+
+Foreach ($function in $functions)
+{
+    $searchcombox.Items.Add($function.name)
+}
+
 $form.ShowDialog() | Out-Null
-
-
-
-
-
-
-
 
 ###WEITERE Beispiele
 
