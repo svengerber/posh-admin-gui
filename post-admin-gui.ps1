@@ -1,6 +1,6 @@
 #Powershell Admin GUI
 #Functions
-function Add-Functions($inputXML1)
+function Add-FunctionsGUI($inputXML1)
 {
     $uis = Get-ChildItem -Path "$PSScriptRoot\functions\*\ui.xaml" 
     foreach ($ui in $uis)
@@ -21,7 +21,7 @@ $searchcombox = $Form.$searchcomboxname
 $inputXML1 = Get-Content "$PSScriptRoot\data\gui\gui-1.xaml"
 $inputXML2 = Get-Content "$PSScriptRoot\data\gui\gui-2.xaml"
 $inputXML1 = $inputXML1 -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
-$inputXML1 = Add-Functions -inputXML1 $inputXML1
+$inputXML1 = Add-FunctionsGUI -inputXML1 $inputXML1
 $inputXML = $inputXML1 + $inputXML2
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
@@ -58,6 +58,8 @@ foreach ($prop_file in $prop_files)
     $functions += $object
 }
 
+
+###Adding Funcions to Searchbox
 Foreach ($function in $functions)
 {
     $searchcombox.Items.Add($function.name)
