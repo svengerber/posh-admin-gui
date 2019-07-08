@@ -12,10 +12,9 @@ function Add-FunctionsGUI($inputXML1)
 }
 
 #DEFINE FORM ITEMS
+
 $searchcomboxname = "searchcombox"
-
 $searchcombox = $Form.$searchcomboxname
-
 
 ###GENERATING GUI
 $inputXML1 = Get-Content "$PSScriptRoot\data\gui\gui-1.xaml"
@@ -44,7 +43,6 @@ $xaml.SelectNodes("//*[@Name]") | %{
 
 
 
-
 ###LOADING FUNCTION PROPERTIES IN ARRAY
 $prop_files = Get-ChildItem -Recurse "$PSScriptRoot\functions\*\properties.json"
 $functions = @()
@@ -59,11 +57,23 @@ foreach ($prop_file in $prop_files)
 }
 
 
+
 ###Adding Funcions to Searchbox
 Foreach ($function in $functions)
 {
     $searchcombox.Items.Add($function.name)
 }
+
+###Define Current GRID
+$startGridname = "startgrid"
+$global:currentGRID = $Form.FindName($startGridname)
+
+$searchcombox.add_SelectionChanged({
+    $global:currentGRID.Visibility = "hidden"
+    $selectedfuntion = ($functions | Where-Object {$_.Name -eq $searchcombox.SelectedItem})
+    $global:currentGRID = $Form.FindName($selectedfuntion.gridname)
+    $global:currentGRID.Visibility = "Visible"
+})
 
 $form.ShowDialog() | Out-Null
 
