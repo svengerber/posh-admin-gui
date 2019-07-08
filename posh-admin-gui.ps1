@@ -15,6 +15,13 @@ function Add-FunctionsGUI($inputXML1)
 
 $searchcomboxname = "searchcombox"
 $searchcombox = $Form.$searchcomboxname
+Add-Type -AssemblyName System.Drawing, PresentationFramework, System.Windows.Forms, WindowsFormsIntegration
+$base64 = Get-Content "$PSScriptRoot\data\gui\icon.txt"
+$bitmap = New-Object System.Windows.Media.Imaging.BitmapImage
+$bitmap.BeginInit()
+$bitmap.StreamSource = [System.IO.MemoryStream][System.Convert]::FromBase64String($base64)
+$bitmap.EndInit()
+$bitmap.Freeze()
 
 ###GENERATING GUI
 $inputXML1 = Get-Content "$PSScriptRoot\data\gui\gui-1.xaml"
@@ -56,7 +63,9 @@ foreach ($prop_file in $prop_files)
     $functions += $object
 }
 
-
+###Set Icon
+$Form.Icon = $bitmap
+$Form.TaskbarItemInfo.Overlay = $bitmap
 
 ###Adding Funcions to Searchbox
 Foreach ($function in $functions)
@@ -75,7 +84,17 @@ $searchcombox.add_SelectionChanged({
     $global:currentGRID.Visibility = "Visible"
 })
 
-$form.ShowDialog() | Out-Null
+$Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid})
+$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
+$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
+$null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
+$Form.Show()
+$Form.Activate()
+$appContext = New-Object System.Windows.Forms.ApplicationContext 
+[void][System.Windows.Forms.Application]::Run($appContext)
+
+
+#$form.ShowDialog() | Out-Null
 
 ###WEITERE Beispiele
 

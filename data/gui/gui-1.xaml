@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:WPF_for_Powershell"
         mc:Ignorable="d"
         Title="Powershell Admin GUI" Height="450" Width="800">
-
+    <Window.TaskbarItemInfo>
+         <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
     <Grid x:Name="mainGrid">
         <Grid x:Name="searchGrid" Margin="10,10,10,371.5">
             <Border BorderBrush="#FF179AC8" BorderThickness="2" />
