@@ -1,6 +1,6 @@
 #Powershell Admin GUI
 #Functions
-function Add-FunctionsGUI($inputXML1)
+function Add-FunctionsToGUI($inputXML1)
 {
     $uis = Get-ChildItem -Path "$PSScriptRoot\functions\*\ui.xaml" 
     foreach ($ui in $uis)
@@ -27,7 +27,7 @@ $bitmap.Freeze()
 $inputXML1 = Get-Content "$PSScriptRoot\data\gui\gui-1.xaml"
 $inputXML2 = Get-Content "$PSScriptRoot\data\gui\gui-2.xaml"
 $inputXML1 = $inputXML1 -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
-$inputXML1 = Add-FunctionsGUI -inputXML1 $inputXML1
+$inputXML1 = Add-FunctionsToGUI -inputXML1 $inputXML1
 $inputXML = $inputXML1 + $inputXML2
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
@@ -65,13 +65,20 @@ foreach ($prop_file in $prop_files)
 
 ###Set Icon
 $Form.Icon = $bitmap
-$Form.TaskbarItemInfo.Overlay = $bitmap
 
 ###Adding Funcions to Searchbox
 Foreach ($function in $functions)
 {
     $searchcombox.Items.Add($function.name)
 }
+
+#Loading Functions
+$func_files = Get-ChildItem -Recurse "$PSScriptRoot\functions\*\function.ps1"
+foreach ($func_file in $func_files)
+{
+    . $func_file.FullName
+}
+
 
 ###Define Current GRID
 $startGridname = "startgrid"
@@ -88,6 +95,7 @@ $Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid
 $windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
 $asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
 $null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
+[System.Windows.Forms.Integration.ElementHost]::EnableModelessKeyboardInterop($Form)
 $Form.Show()
 $Form.Activate()
 $appContext = New-Object System.Windows.Forms.ApplicationContext 

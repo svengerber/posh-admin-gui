@@ -2,6 +2,12 @@ function Get-LongFilePaths ($path, $max_length) {
     Get-ChildItem $path -Recurse -Force -ErrorAction SilentlyContinue | Where-Object {$_.FullName.Length -gt $max_length} | Select-Object FullName, @{Name="Path_Length";Expression={ $_.FullName.Length }}
 }
 
+#Define GUI Items
+$pathtextboxname = "pathlengthtextpath"
+$pathtextbox = $Form.FindName($pathtextboxname)
+
+$pathtextbox.Text = "Testtext123"
+
 ##EXAMPLE CODE
 #. "$PSScriptRoot\files-folders\f-path.ps1"
 #$items = Get-LongFilePaths -path "C:\Users\svenu\OneDrive\Music" -max_length "10"

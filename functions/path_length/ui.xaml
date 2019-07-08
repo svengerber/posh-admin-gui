@@ -1,3 +1,7 @@
 <Grid x:Name="pathlength" Visibility="Hidden">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Path Searcher" VerticalAlignment="Top" FontSize="25"/>
+                <DataGrid HorizontalAlignment="Left" Height="234" Margin="10,112,0,0" VerticalAlignment="Top" Width="746"/>
+                <TextBlock HorizontalAlignment="Left" Margin="623,85,0,0" TextWrapping="Wrap" Text="File Count" VerticalAlignment="Top" Height="17" Width="59"/>
+                <TextBox HorizontalAlignment="Left" Height="29" Margin="10,78,0,0" TextWrapping="Wrap" Text="Enter Path" VerticalAlignment="Top" Width="444" VerticalContentAlignment="Center" x:Name="pathlengthtextpath"/>
+                <Button Content="Search" HorizontalAlignment="Left" Margin="459,78,0,0" VerticalAlignment="Top" Width="83" Height="29"/>
 </Grid>
