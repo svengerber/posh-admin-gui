@@ -91,42 +91,20 @@ $searchcombox.add_SelectionChanged({
     $global:currentGRID.Visibility = "Visible"
 })
 
-$Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid})
-$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
-$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
-$null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
-[System.Windows.Forms.Integration.ElementHost]::EnableModelessKeyboardInterop($Form)
-$Form.Show()
-$Form.Activate()
-$appContext = New-Object System.Windows.Forms.ApplicationContext 
-[void][System.Windows.Forms.Application]::Run($appContext)
 
 
-#$form.ShowDialog() | Out-Null
 
-###WEITERE Beispiele
+###Für Darstellung mit Konsole
+$form.ShowDialog() | Out-Null
 
-########################
-#Manipulate the XAML
-########################
 
-#$bSubmit.Content = "This Button"
-#$lLabel.Content = "Ehhhh"
-#$tbUsername.Text = "UserName"
-
-########################
-#Add Event Handlers
-########################
-
-#$bSubmit.Add_Click({
- #   
-  ##  if ($tbUsername.Text -ne "" -and $tbUsername.Text -ne "UserName" -and $pbPassword.Password -ne "") {
-#
- ###       $lLabel.Content = "You pressed the button."
-#
- #       }
-#
- #   })
-
-#Show the Form
-
+###Für Darstellung ohne Powershell Konsole
+#$Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid})
+#$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
+#$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
+$#null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
+#[System.Windows.Forms.Integration.ElementHost]::EnableModelessKeyboardInterop($Form)
+#$Form.Show()
+#$Form.Activate()
+#$appContext = New-Object System.Windows.Forms.ApplicationContext 
+#[void][System.Windows.Forms.Application]::Run($appContext)
