@@ -29,6 +29,9 @@ $inputXML2 = Get-Content "$PSScriptRoot\data\gui\gui-2.xaml"
 $inputXML1 = $inputXML1 -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
 $inputXML1 = Add-FunctionsToGUI -inputXML1 $inputXML1
 $inputXML = $inputXML1 + $inputXML2
+#Add Style
+$style = Get-Content "$PSScriptRoot\data\gui\style.xaml"
+$inputXML = $inputXML -replace "<!-- INSERT_STYLE -->", $style
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML

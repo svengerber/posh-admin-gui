@@ -6,17 +6,20 @@
         xmlns:local="clr-namespace:WPF_for_Powershell"
         mc:Ignorable="d"
         Title="Powershell Admin GUI" Height="450" Width="800">
+    
+    <!-- INSERT_STYLE -->
+
     <Window.TaskbarItemInfo>
          <TaskbarItemInfo/>
     </Window.TaskbarItemInfo>
     <Grid x:Name="mainGrid">
         <Grid x:Name="searchGrid" Margin="10,10,10,371.5">
-            <Border BorderBrush="#FF179AC8" BorderThickness="2" />
+            <Border/>
             <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" Width="613" VerticalAlignment="Center" Height="25" IsEditable="True" Name="searchcombox"/>
             <Button Content="Go" Height="25" Width="121" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid x:Name="functionGrid" Margin="10,56,10,10">
-            <Border BorderBrush="#FF179AC8" BorderThickness="2" />
+            <Border/>
 
             <!-- INSERT_FUNCTIONS -->
 

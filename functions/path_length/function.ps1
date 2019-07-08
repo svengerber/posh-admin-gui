@@ -23,6 +23,7 @@ function Save-CSVFile()
 
 $pathlength_form_path = $Form.FindName("pathlengthtextpath")
 $pathlength_form_length = $Form.FindName("pathlengthtextlength")
+$pathlength_form_filecount = $Form.FindName("pathlengthfilecount")
 $pathlength_form_searchbutton = $Form.FindName("pathlengthsearchbutton")
 $pathlength_form_selectbutton = $Form.FindName("pathlengthselectbutton")
 $pathlength_form_exportbutton = $Form.FindName("pathlengthexportbutton")
@@ -36,6 +37,7 @@ $pathlength_form_searchbutton.Add_Click({
     {
         $pathlength_form_datagrid.AddChild($result)
     }
+    $pathlength_form_filecount.Text = $results.Count
 })
 
 $pathlength_form_selectbutton.Add_Click({

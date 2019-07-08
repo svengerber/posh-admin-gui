@@ -1,0 +1,21 @@
+ <Window.Resources>
+    <ResourceDictionary>
+        
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="#FF00AEFF"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="{x:Type Border}">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+    </ResourceDictionary>
+</Window.Resources>

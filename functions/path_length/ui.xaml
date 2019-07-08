@@ -1,7 +1,7 @@
 <Grid x:Name="pathlength" Visibility="Hidden">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Path Searcher" VerticalAlignment="Top" FontSize="20"/>
                 <TextBlock HorizontalAlignment="Left" Margin="446,53,0,0" TextWrapping="Wrap" Text="File Count" VerticalAlignment="Top" Height="17" Width="59"/>
-                <TextBlock HorizontalAlignment="Left" Margin="520,53,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="17" Width="60"/>
+                <TextBlock x:Name="pathlengthfilecount" HorizontalAlignment="Left" Margin="520,53,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="17" Width="60"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="Max Length" VerticalAlignment="Top" Height="17" Width="76"/>
 
                 <TextBox x:Name="pathlengthtextpath" HorizontalAlignment="Left" Height="22" Margin="91,85,0,0" TextWrapping="Wrap" Text="Path..." VerticalAlignment="Top" Width="331" VerticalContentAlignment="Center"/>
