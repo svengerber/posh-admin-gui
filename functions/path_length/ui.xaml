@@ -13,8 +13,8 @@
 
                 <DataGrid x:Name="pathlengthdatagrid" Margin="10,120,10,10.5">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Path" Binding="{Binding FullName}" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Length" Binding="{Binding Path_Length}" IsReadOnly="True" Width="Auto"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Path" Binding="{Binding FullName}" IsReadOnly="True" Width="*"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Length" Binding="{Binding Path_Length}" IsReadOnly="True" Width="0.25*"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
                 

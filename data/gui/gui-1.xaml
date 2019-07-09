@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_for_Powershell"
         mc:Ignorable="d"
-        Title="Powershell Admin GUI" Height="450" Width="800">
+        Title="Powershell Admin GUI" 
+        Height="450" 
+        Width="800"
+        WindowStartupLocation="CenterOwner"
+        >
     
     <!-- INSERT_STYLE -->
 
@@ -14,15 +18,15 @@
     </Window.TaskbarItemInfo>
     <Grid x:Name="mainGrid">
         <Grid x:Name="searchGrid" Margin="10,10,10,371.5">
-            <Border/>
+            <Border Style="{StaticResource searchboarder}"/>
             <ComboBox Margin="10,0,0,0" HorizontalAlignment="Left" Width="613" VerticalAlignment="Center" Height="25" IsEditable="True" Name="searchcombox"/>
             <Button Content="Go" Height="25" Width="121" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalContentAlignment="Center" HorizontalAlignment="Right" />
         </Grid>
         <Grid x:Name="functionGrid" Margin="10,56,10,10">
             <Border/>
 
-            <!-- INSERT_FUNCTIONS -->
-
             <Grid x:Name="startgrid" Visibility="Visible">
                 <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" FontSize="25"/>
             </Grid>
+
+            <!-- INSERT_FUNCTIONS -->

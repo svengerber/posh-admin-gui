@@ -1,20 +1,41 @@
  <Window.Resources>
     <ResourceDictionary>
         
+        <!-- TEXTBOXES -->
         <Style TargetType="{x:Type TextBox}">
             <Setter Property="BorderThickness" Value="0,0,0,1"/>
         </Style>
+        
+        <!-- COMBOBOXES -->
+        
 
+        <!-- BUTTONS -->
         <Style TargetType="{x:Type Button}">
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Background" Value="#FF00AEFF"/>
-            <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Background" Value="DodgerBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
         </Style>
 
+        <!-- BORDERS -->
         <Style TargetType="{x:Type Border}">
             <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style TargetType="{x:Type Border}" x:Key="searchboarder">
+            <Setter Property="CornerRadius" Value="2"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
 
     </ResourceDictionary>
