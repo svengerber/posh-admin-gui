@@ -4,8 +4,8 @@
                 <TextBlock x:Name="pathlengthfilecount" HorizontalAlignment="Left" Margin="520,53,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="17" Width="60"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="Max Length" VerticalAlignment="Top" Height="17" Width="76"/>
 
-                <TextBox x:Name="pathlengthtextpath" HorizontalAlignment="Left" Height="22" Margin="91,85,0,0" TextWrapping="Wrap" Text="Path..." VerticalAlignment="Top" Width="331" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="pathlengthtextlength" HorizontalAlignment="Left" Margin="91,50,0,0" TextWrapping="Wrap" Text="255" Width="331" VerticalContentAlignment="Center" Height="22" VerticalAlignment="Top"/>
+                <TextBox x:Name="pathlengthtextpath" Tag="Enter Path" HorizontalAlignment="Left" Height="22" Margin="91,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="331" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="pathlengthtextlength" Text="255" HorizontalAlignment="Left" Margin="91,50,0,0" TextWrapping="Wrap"  Width="331" VerticalContentAlignment="Center" Height="22" VerticalAlignment="Top"/>
 
                 <Button x:Name="pathlengthexportbutton" Content="Export to CSV" HorizontalAlignment="Left" Margin="666,85,0,0" VerticalAlignment="Top" Width="90" Height="22"/>
                 <Button x:Name="pathlengthsearchbutton" Content="Search" HorizontalAlignment="Left" Margin="446,85,0,0" VerticalAlignment="Top" Width="77" Height="22"/>
@@ -17,6 +17,5 @@
                         <DataGridTextColumn Header="Length" Binding="{Binding Path_Length}" IsReadOnly="True" Width="0.25*"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                
             
 </Grid>
