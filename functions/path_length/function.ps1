@@ -13,7 +13,7 @@ function Save-CSVFile()
 {
     [System.Reflection.Assembly]::LoadWithPartialName("System.windows.forms") | Out-Null
     $SF = New-Object System.Windows.Forms.SaveFileDialog
-    $SF.initialDirectory = $PSScriptRoot   
+    $SF.initialDirectory = $HOME 
     $SF.title = "Save CSV File to Disk"  
     $SF.Filter = "CSV Files|*.csv"
     $SF.ShowDialog() | Out-Null
