@@ -1,20 +1,21 @@
 #Powershell Admin GUI
 #Functions
-function Add-FunctionsToGUI($inputXML1)
+function Add-FunctionsToGUI($GUI)
 {
     $uis = Get-ChildItem -Path "$PSScriptRoot\functions\*\ui.xaml" 
     foreach ($ui in $uis)
     {
         $add = Get-Content -Path $ui.FullName
-        $inputXML1 = $inputXML1 + $add
+        $alluis = $alluis + $add
     }
-    return $inputXML1
+    $GUI = $GUI -replace "<!-- INSERT_FUNCTIONS_PLACEHOLDER -->", $alluis
+    return $GUI
 }
 
 #DEFINE FORM ITEMS
-
 $searchcomboxname = "searchcombox"
 $searchcombox = $Form.$searchcomboxname
+
 Add-Type -AssemblyName System.Drawing, PresentationFramework, System.Windows.Forms, WindowsFormsIntegration
 $base64 = Get-Content "$PSScriptRoot\data\gui\icon.txt"
 $bitmap = New-Object System.Windows.Media.Imaging.BitmapImage
@@ -24,14 +25,13 @@ $bitmap.EndInit()
 $bitmap.Freeze()
 
 ###GENERATING GUI
-$inputXML1 = Get-Content "$PSScriptRoot\data\gui\gui-1.xaml"
-$inputXML2 = Get-Content "$PSScriptRoot\data\gui\gui-2.xaml"
-$inputXML1 = $inputXML1 -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
-$inputXML1 = Add-FunctionsToGUI -inputXML1 $inputXML1
-$inputXML = $inputXML1 + $inputXML2
+$inputXMLraw = Get-Content "$PSScriptRoot\data\gui\gui.xaml"
+$inputXML = $inputXMLraw -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
+$inputXML = Add-FunctionsToGUI -GUI $inputXML
+
 #Add Style
 $style = Get-Content "$PSScriptRoot\data\gui\style.xaml"
-$inputXML = $inputXML -replace "<!-- INSERT_STYLE -->", $style
+$inputXML = $inputXML -replace "<!-- INSERT_STYLE_PLACEHOLDER -->", $style
 
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
@@ -82,11 +82,7 @@ foreach ($func_file in $func_files)
     . $func_file.FullName
 }
 
-
-###Define Current GRID
-$startGridname = "startgrid"
-$global:currentGRID = $Form.FindName($startGridname)
-
+###Define Current GRID and Creator Name
 $searchcombox.add_SelectionChanged({
     $global:currentGRID.Visibility = "hidden"
     $selectedfuntion = ($functions | Where-Object {$_.Name -eq $searchcombox.SelectedItem})
@@ -94,7 +90,10 @@ $searchcombox.add_SelectionChanged({
     $global:currentGRID.Visibility = "Visible"
 })
 
-
+##Show Home Grid
+$homeGridname = "homegrid"
+$Form.FindName($homeGridname).Visibility = "Visible"
+$global:currentGRID = $Form.FindName($homeGridname)
 
 
 ###Für Darstellung mit Konsole
@@ -105,7 +104,7 @@ $form.ShowDialog() | Out-Null
 #$Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid})
 #$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
 #$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
-$#null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
+#null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
 #[System.Windows.Forms.Integration.ElementHost]::EnableModelessKeyboardInterop($Form)
 #$Form.Show()
 #$Form.Activate()

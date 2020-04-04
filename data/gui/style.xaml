@@ -1,16 +1,14 @@
- <Window.Resources>
-    <ResourceDictionary>
-        
-        <!-- TEXTBOXES -->
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Template">
+<Window.Resources>
+        <ResourceDictionary>
+            <!-- TEXTBOXES -->
+            <Style TargetType="{x:Type TextBox}">
+                <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TextBox}">
                             <Grid>
                                 <Border Background="White" BorderBrush="#FF7D8683" BorderThickness="0,0,0,1"/>
                                 <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
-                                <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"
-                               Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                                <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"                                Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiTrigger>
@@ -26,13 +24,10 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-        </Style>
-        
-        <!-- COMBOBOXES -->
-        
-
-        <!-- BUTTONS -->
-        <Style TargetType="{x:Type Button}">
+            </Style>
+            <!-- COMBOBOXES -->
+            <!-- BUTTONS -->
+            <Style TargetType="{x:Type Button}">
                 <Setter Property="BorderThickness" Value="2"/>
                 <Setter Property="Background" Value="DodgerBlue"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -45,20 +40,17 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-        </Style>
-
-        <!-- BORDERS -->
-        <Style TargetType="{x:Type Border}">
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="2"/>
-        </Style>
-
-        <Style TargetType="{x:Type Border}" x:Key="searchboarder">
-            <Setter Property="CornerRadius" Value="2"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-
-    </ResourceDictionary>
-</Window.Resources>
+            </Style>
+            <!-- BORDERS -->
+            <Style TargetType="{x:Type Border}" x:Key="functionboarder">
+                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+            <Style TargetType="{x:Type Border}" x:Key="searchboarder">
+                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="BorderThickness" Value="1"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
