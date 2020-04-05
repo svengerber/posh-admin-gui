@@ -17,7 +17,7 @@ $pathstylexml = "$PSScriptRoot\data\gui\style.xaml"
 
 
 
-# -------------------- Functions
+#-------------------- Functions
 function Add-FunctionsToGUI($GUI)
 {
     $uis = Get-ChildItem -Path $pathfunctionuis
@@ -32,7 +32,7 @@ function Add-FunctionsToGUI($GUI)
 
 
 
-# -------------------- Preparing GUI 
+#-------------------- Preparing GUI
 #Generating XML to render
 $inputXMLraw = Get-Content -Path $pathguixmlraw
 $inputXML = $inputXMLraw -replace 'mc:Ignorable="d"','' -replace "x:N",'N' -replace '^<Win.*', '<Window'
@@ -42,7 +42,7 @@ $inputXML = Add-FunctionsToGUI -GUI $inputXML
 $style = Get-Content -Path $pathstylexml
 $inputXML = $inputXML -replace "<!-- INSERT_STYLE_PLACEHOLDER -->", $style
 
-#Creating form with xml 
+#Creating form with xml
 [void][System.Reflection.Assembly]::LoadWithPartialName('presentationframework')
 [xml]$XAML = $inputXML
 $reader=(New-Object System.Xml.XmlNodeReader $xaml)
@@ -53,7 +53,7 @@ catch{
     Write-Warning "Unable to parse XML, with error: $($Error[0])`n Ensure that there are NO SelectionChanged or TextChanged properties in your textboxes (PowerShell cannot process them)"
     throw
 }
-$xaml.SelectNodes("//*[@Name]") | %{
+$xaml.SelectNodes("//*[@Name]") | ForEach-Object{
     try {Set-Variable -Name "$($_.Name)" -Value $Form.FindName($_.Name) -ErrorAction Stop}
     catch{throw}
     }
@@ -69,7 +69,7 @@ $Form.Icon = $bitmap
 
 
 
-# -------------------- Loading and adding functions 
+#-------------------- Loading and adding functions
 #Loading Functions in Array with Properties name,creator,gridname
 $prop_files = Get-ChildItem -Recurse "$PSScriptRoot\functions\*\properties.json"
 $functions = @()
@@ -103,7 +103,7 @@ foreach ($func_file in $func_files)
 
 
 
-# -------------------- Adding events to form
+#-------------------- Adding events to form
 #Change GRID visibility based on selection
 $searchcombox.add_SelectionChanged({
     $global:currentGRID.Visibility = "hidden"
@@ -114,18 +114,18 @@ $searchcombox.add_SelectionChanged({
 
 
 
-# -------------------- Showing GUI
+#-------------------- Showing GUI
 
 #With POSH Console for debugging
 $form.ShowDialog() | Out-Null
 
 #Without POSH Console
 #$Form.Add_Closing({[System.Windows.Forms.Application]::Exit(); Stop-Process $pid})
-#$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);' 
-#$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru 
+#$windowcode = '[DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);'
+#$asyncwindow = Add-Type -MemberDefinition $windowcode -name Win32ShowWindowAsync -namespace Win32Functions -PassThru
 #null = $asyncwindow::ShowWindowAsync((Get-Process -PID $pid).MainWindowHandle, 0)
 #[System.Windows.Forms.Integration.ElementHost]::EnableModelessKeyboardInterop($Form)
 #$Form.Show()
 #$Form.Activate()
-#$appContext = New-Object System.Windows.Forms.ApplicationContext 
+#$appContext = New-Object System.Windows.Forms.ApplicationContext
 #[void][System.Windows.Forms.Application]::Run($appContext)
