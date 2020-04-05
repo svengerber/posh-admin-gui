@@ -29,8 +29,9 @@ $pathlength_form_selectbutton = $Form.FindName("pathlengthselectbutton")
 $pathlength_form_exportbutton = $Form.FindName("pathlengthexportbutton")
 $pathlength_form_datagrid = $Form.FindName("pathlengthdatagrid")
 
+#Adding GUI events
 $pathlength_form_searchbutton.Add_Click({
-    $pathlength_form_datagrid.Clear()
+    $pathlength_form_datagrid.Items.Clear()
     $max_length = $pathlength_form_length.Text -as [int]
     $results = Get-LongFilePaths -path $pathlength_form_path.Text -max_length $max_length
     foreach ($result in $results)
