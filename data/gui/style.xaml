@@ -7,8 +7,8 @@
                         <ControlTemplate TargetType="{x:Type TextBox}">
                             <Grid>
                                 <Border Background="White" BorderBrush="#FF7D8683" BorderThickness="0,0,0,1"/>
-                                <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
-                                <Label Margin="5,0,0,0" x:Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center"                                Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
+                                <ScrollViewer Name="PART_ContentHost" Margin="5,0,0,0" VerticalAlignment="Center" />
+                                <Label Margin="5,0,0,0" Name="WaterMarkLabel" Content="{TemplateBinding Tag}" VerticalAlignment="Center" Visibility="Collapsed" Foreground="Gray" FontFamily="Arial"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <MultiTrigger>

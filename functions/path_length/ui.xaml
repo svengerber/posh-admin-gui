@@ -1,15 +1,15 @@
-<Grid x:Name="pathlength" Visibility="Hidden">
+<Grid Name="pathlength" Visibility="Hidden">
  <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Pathlength Searcher" VerticalAlignment="Top" FontSize="20"/>
                 <TextBlock HorizontalAlignment="Left" Margin="555,55,0,0" TextWrapping="Wrap" Text="File Count" VerticalAlignment="Top" Height="17" Width="54"/>
-                <TextBlock x:Name="pathlengthfilecount" HorizontalAlignment="Left" Margin="622,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="17" Width="52"/>
+                <TextBlock Name="pathlengthfilecount" HorizontalAlignment="Left" Margin="622,55,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="17" Width="52"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="Max Length: " VerticalAlignment="Top" Height="17" Width="76"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,88,0,0" TextWrapping="Wrap" Text="Folder Path: " VerticalAlignment="Top" Height="17" Width="76"/>
-                <TextBox x:Name="pathlengthtextpath" Tag="Enter Path" HorizontalAlignment="Left" Height="22" Margin="91,85,0,0" VerticalAlignment="Top" Width="331" VerticalContentAlignment="Center"/>
-                <TextBox x:Name="pathlengthtextlength" Tag="Windows Default Max: 260" HorizontalAlignment="Left" Margin="91,50,0,0" TextWrapping="Wrap"  Width="331" VerticalContentAlignment="Center" Height="22" VerticalAlignment="Top"/>
-                <Button x:Name="pathlengthexportbutton" Content="Export to CSV" HorizontalAlignment="Left" Margin="666,85,0,0" VerticalAlignment="Top" Width="90" Height="22"/>
-                <Button x:Name="pathlengthsearchbutton" Content="Search" HorizontalAlignment="Left" Margin="545,85,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
-                <Button x:Name="pathlengthselectbutton" Content="Set Path" HorizontalAlignment="Left" Margin="446,85,0,0" VerticalAlignment="Top" Width="68" Height="22"/>
-                <DataGrid x:Name="pathlengthdatagrid" Margin="10,120,10,10.5">
+                <TextBox Name="pathlengthtextpath" Tag="Enter Path" HorizontalAlignment="Left" Height="22" Margin="91,85,0,0" VerticalAlignment="Top" Width="331" VerticalContentAlignment="Center"/>
+                <TextBox Name="pathlengthtextlength" Tag="Windows Default Max: 260" HorizontalAlignment="Left" Margin="91,50,0,0" TextWrapping="Wrap"  Width="331" VerticalContentAlignment="Center" Height="22" VerticalAlignment="Top"/>
+                <Button Name="pathlengthexportbutton" Content="Export to CSV" HorizontalAlignment="Left" Margin="666,85,0,0" VerticalAlignment="Top" Width="90" Height="22"/>
+                <Button Name="pathlengthsearchbutton" Content="Search" HorizontalAlignment="Left" Margin="545,85,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
+                <Button Name="pathlengthselectbutton" Content="Set Path" HorizontalAlignment="Left" Margin="446,85,0,0" VerticalAlignment="Top" Width="68" Height="22"/>
+                <DataGrid Name="pathlengthdatagrid" Margin="10,120,10,10.5">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Path" Binding="{Binding FullName}" IsReadOnly="True" Width="*"></DataGridTextColumn>
                         <DataGridTextColumn Header="Length" Binding="{Binding Path_Length}" IsReadOnly="True" Width="0.25*"></DataGridTextColumn>

@@ -1,4 +1,4 @@
- <Grid x:Name="homegrid" Visibility="Hidden">
+ <Grid Name="homegrid" Visibility="Hidden">
                 <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Start" VerticalAlignment="Top" FontSize="25"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" Text="Powershell Admin GUI created by Sven Gerber" VerticalAlignment="Top" FontSize="15"/>
             </Grid>
