@@ -48,7 +48,10 @@ $pathlength_form_selectbutton.Add_Click({
 $pathlength_form_exportbutton.Add_Click({
     $csvpath = Save-CSVFile
     $results = Get-LongFilePaths -path $pathlength_form_path.Text -max_length $pathlength_form_length.Text -as [int]
-    $results | Export-CSV -Path $csvpath
+    if ($csvpath)
+    {
+        $results | Export-CSV -Path $csvpath
+    }
 })
 
 ##EXAMPLE CODE
